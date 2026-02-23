@@ -2,7 +2,8 @@
   import Menubar from 'primevue/menubar';
 import { ref } from "vue";
 import { useRouter } from 'vue-router';
-
+import InputText from 'primevue/inputtext';
+import AutoComplete from 'primevue/autocomplete';
 const router = useRouter();
 
 const items = ref([
@@ -28,7 +29,17 @@ const items = ref([
         }
     },        
 
-]);
+])
+
+
+
+const value = ref(null);
+const xitems = ref([]);
+
+const search = (event) => {
+    xitems.value = [...Array(10).keys()].map((item) => event.query + '-' + item);
+}
+;
 </script>
 
 
@@ -37,8 +48,17 @@ const items = ref([
 
 
 <template>
-<Menubar :model="items">
-    <template #item="{ item, props, hasSubmenu }">
+<Menubar :model="items" >
+
+
+  
+ <template #start>
+      <a href="/"><img alt="logo" src="/img/logo.png" height="40" /></a>
+ </template>
+
+
+  
+    <template  #item="{ item, props, hasSubmenu }">
         <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
             <a v-ripple :href="href" v-bind="props.action" @click="navigate">
                 <span :class="item.icon" />
@@ -51,8 +71,16 @@ const items = ref([
             <span v-if="hasSubmenu" class="pi pi-fw pi-angle-down" />
         </a>
     </template>
+
+
+
+ <template #end>
+
+        <AutoComplete v-model="value" :suggestions="xitems" @complete="search" />
+
+ </template>
 </Menubar>
+
+
+
 </template>
-
-
-
