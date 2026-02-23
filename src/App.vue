@@ -5,16 +5,9 @@ import Menubar from './components/Menubar.vue'
 </script>
 
 <template>
-  <Menubar />  
   <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+  <Menubar />  
   </header>
-
   <RouterView />
 </template>
 
