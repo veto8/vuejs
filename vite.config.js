@@ -22,15 +22,24 @@ export default defineConfig({
         theme_color: "#ffffff",
         icons: [
           {
-            src: "pwa-192x192.png", // Path to your 192x192 icon
+            src: "img/pwa-192x192.png", // Path to your 192x192 icon
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "pwa-512x512.png", // Path to your 512x512 icon
+            src: "img/pwa-512x512.png", // Path to your 512x512 icon
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
+          },
+        ],
+        screenshots: [
+          {
+            src: "img/screenshot.png",
+            sizes: "320x320",
+            type: "image/png",
+            form_factor: "wide",
+            label: "Wonder Widgets",
           },
         ],
       },
