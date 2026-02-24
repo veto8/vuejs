@@ -1,0 +1,14 @@
+@import './base.css';
+header {
+    margin-top: 0px;
+}
+#app {
+  margin: 0 auto;
+  padding: 0;
+  font-weight: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
