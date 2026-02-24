@@ -3,13 +3,11 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';
-import { ProductService } from '@/service/ProductService';
+import ProductService from '../services/ProductService';
 
-onMounted(() => {
-    ProductService.getProductsMini().then((data) => (products.value = data));
-});
 
-const products = ref();
+
+
 
 </script>
 <template>
