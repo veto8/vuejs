@@ -21,6 +21,13 @@ const items = ref([
         }
     },
     {
+        label: 'Shop',
+        icon: 'pi pi-shop',
+        command: () => {
+            router.push('/shop');
+        }
+    },    
+    {
         label: 'About',
         icon: 'pi pi-link',
         command: () => {

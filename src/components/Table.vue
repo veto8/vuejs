@@ -5,30 +5,25 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';
-import ProductService from '../services/ProductService';
+import Products from '../services/Products';
 
-const v = ref("fuck");
-const products = ref([]);
+const xproducts = ref([]);
+const category = ref("test");
+//const p = await new Products();
+
 
 onMounted(async () => {
-  v.value = 'ffffffffff';
-  products.value =[
-    {code:"xxx",name:"fff",category:"ccccc",quantity:"1111"},
-    {code:"xxx",name:"fff",category:"ccccc",quantity:"1111"},
-    {code:"xxx",name:"fff",category:"ccccc",quantity:"1111"},
-    {code:"xxx",name:"fff",category:"ccccc",quantity:"1111"},    
-
-]
+    const p = await new Products();
+    const ps = await p.get();
+    xproducts.value = ps;
 });
-
 
 
 </script>
 <template>
-<br>
- {{v}}
+<h2>Category: {{category}}</h2>
     <div class="card">
-        <DataTable :value="products" tableStyle="min-width: 50rem" responsiveLayout="scroll">
+        <DataTable :value="xproducts" tableStyle="min-width: 50rem" responsiveLayout="scroll">
             <Column field="code" header="Code"></Column>
             <Column field="name" header="Name"></Column>
             <Column field="category" header="Category"></Column>
