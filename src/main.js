@@ -5,7 +5,6 @@ import App from "./App.vue";
 import router from "./router";
 import PrimeVue from "primevue/config";
 import Aura from "@primeuix/themes/aura";
-import Button from "primevue/button";
 //import "./services/Pwa";
 
 const app = createApp(App);
@@ -22,7 +21,5 @@ app.use(PrimeVue, {
     },
   },
 });
-
-app.component("Button2", Button);
 
 app.mount("#app");

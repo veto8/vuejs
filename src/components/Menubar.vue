@@ -117,10 +117,7 @@ function  handle_a2d() {
 
 
     <template #end>
-      <div class="search-container">
-
-
-
+    <div class="search-container" >
     <AutoComplete 
       v-model="value" 
       :suggestions="xitems" 
@@ -134,7 +131,7 @@ function  handle_a2d() {
       size="small"
       @click="handle_search"
     />
-      </div>
+    </div>
 
       
       
