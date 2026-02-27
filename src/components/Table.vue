@@ -21,8 +21,9 @@ onMounted(async () => {
 
 </script>
 <template>
-<h2>Category: {{category}}</h2>
-    <div class="card">
+
+<div class="card">
+
         <DataTable :value="xproducts" tableStyle="min-width: 50rem" responsiveLayout="scroll">
             <Column field="code" header="Code"></Column>
             <Column field="name" header="Name"></Column>
