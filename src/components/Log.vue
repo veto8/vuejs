@@ -7,7 +7,8 @@
 
 <style scoped>
 #logger {
-    width:98%;
+    width:99%;
     height: 300px;
+    margin-left: 15px;
 }
 </style>

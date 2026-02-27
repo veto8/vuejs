@@ -18,7 +18,7 @@ const items = ref([
         }
     },
     {
-        label: 'Shop',
+        label: 'Securities',
         icon: 'pi pi-shop',
         command: () => {
             router.push('/shop');
@@ -148,15 +148,13 @@ function  handle_a2d() {
 
 
 <style scoped>
-  
-  
   .search-container {
-
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  width: 100%;
-  max-width: 400px;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding-right: 15px;
 }
 
 .search-input {
