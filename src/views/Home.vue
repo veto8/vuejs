@@ -1,11 +1,10 @@
 <script setup>
 import Breadcrumb from '../components/Breadcrumb.vue'
-import Log2textarea from '../components/Log2textarea.vue'
+import { ref,onMounted,inject } from "vue";
+const items = ref([]);
 
-
-import { ref,onMounted } from "vue";
-  const items = ref([
-  ]);
+const log = inject('log'); // Inject the ref
+log.value.info("hello");
 
 </script>
 
