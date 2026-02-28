@@ -5,19 +5,13 @@ import { ref,onMounted,inject } from "vue";
   ]);
 
 const log = inject('log');
-const test = inject('Test'); 
 const worker = inject('Worker');
-
 onMounted(() => {
-
 });
 
 const init_sqlite3 = async () => {
 log.info("...init_sqlite3");
-log.info(test.message);
-log.info(test.sum(2,3));
 worker.postMessage(["test"]);
-
 };
 
 

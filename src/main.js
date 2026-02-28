@@ -18,13 +18,14 @@ worker.onmessage = (e) => {
 
 const app = createApp(App);
 
+/* Example
 app.provide("Test", {
   message: "Hello",
   sum(a, b) {
     return a + b;
   },
 });
-
+*/
 app.provide("Worker", worker);
 
 app.use(router);
