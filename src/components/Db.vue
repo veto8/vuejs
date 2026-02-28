@@ -6,12 +6,15 @@ import { ref,onMounted,inject } from "vue";
 
 const log = inject('log');
 const worker = inject('Worker');
+const worker_service  = inject('Worker_service');
+
 onMounted(() => {
 });
 
 const init_sqlite3 = async () => {
 log.info("...init_sqlite3");
-worker.postMessage(["test"]);
+  let msg = await worker_service.post_message(worker,"test","my message");
+  log.info(msg);
 };
 
 

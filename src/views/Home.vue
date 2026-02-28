@@ -4,7 +4,7 @@ import Db from '../components/Db.vue'
 import { ref,onMounted,inject } from "vue";
 const items = ref([]);
 
-const log = inject('log'); // Inject the ref
+const log = inject('log'); 
 log.info("...Home");
 
 </script>

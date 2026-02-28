@@ -81,7 +81,7 @@ self.onmessage = async (evento) => {
   switch (accion) {
     case "test":
       await iniciar();
-      self.postMessage(["test"]);
+      self.postMessage(["test", "your message was:" + argumentos]);
       break;
 
     case "iniciar":

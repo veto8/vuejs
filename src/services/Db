@@ -1,0 +1,7 @@
+  /home/veto/webs/vuejs/v1/src/services:
+  total used in directory 20 available 32.1 GiB
+  drwxrwxr-x 2 veto veto 4096 Feb 28 09:43 .
+  drwxrwxr-x 8 veto veto 4096 Feb 28 09:59 ..
+  -rw-rw-r-- 1 veto veto 2910 Feb 28 09:53 db_worker.js
+  -rw-rw-r-- 1 veto veto  770 Feb 27 03:55 Products.js
+  -rw-rw-r-- 1 veto veto 1288 Feb 28 14:17 Worker_service.js

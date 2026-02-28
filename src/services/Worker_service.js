@@ -1,0 +1,117 @@
+// services/ProductService.js
+
+const Worker_service = {
+  async get() {
+    let products = [
+      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
+      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
+      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
+      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
+      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
+      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
+      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
+      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
+    ];
+    return products;
+  },
+
+  async post_message(worker, id, message) {
+    return new Promise((resolve, reject) => {
+      const messageId = 12345;
+      //      console.log(messageId);
+      worker.onmessage = (e) => {
+        const action = e.data[0];
+        const args = e.data[1];
+
+        console.log(args);
+        console.log(action);
+        switch (action) {
+          case "test":
+            resolve(args);
+            break;
+          case "log_message":
+            console.log({ args });
+            //log.info(argumentos);
+            break;
+        }
+      };
+      /*
+      worker.onmessage = (event) => {
+        if (event.data.id === messageId) {
+          console.log("xxxxxx");
+          resolve(event.data.result);
+          worker.onmessage = null;
+        }
+      };
+      */
+      worker.onerror = (error) => {
+        reject(error);
+        worker.onerror = null;
+      };
+      worker.postMessage([id, message]);
+    });
+  },
+  async make_id() {
+    return (
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15)
+    );
+  },
+};
+
+export default Worker_service;
+
+// services/ProductService.js
+//import { ref, onMounted, inject } from "vue";
+//const worker = new Worker(new URL("./db_worker.js", import.meta.url), {
+//  type: "module",
+//});
+
+/*
+const log = inject("log");
+
+worker.onmessage = (e) => {
+  const action = e.data[0];
+  const args = e.data[1];
+  switch (action) {
+    case "test":
+      log.info("ffffffffF");
+      break;
+    case "log_message":
+      console.log({ args });
+      //log.info(argumentos);
+      break;
+  }
+};
+
+/*
+worker.onmessage = (evento) => {
+  const accion = evento.data[0];
+  const argumentos = evento.data[1];
+  switch (accion) {
+    case "iniciado":
+      [$nombre, $fechaNacimiento, $insertar, $obtener].forEach(
+        (elemento) => (elemento.disabled = false),
+      );
+      break;
+    case "persona_insertada":
+      console.log({ argumentos });
+      //log.info("...persona insertada");
+      break;
+
+    case "log_message":
+      console.log({ argumentos });
+      //log.info(argumentos);
+      break;
+
+    case "personas_obtenidas":
+      const personas = argumentos;
+      $contenedorPersonas.innerHTML = "";
+      for (const persona of personas) {
+        //  $contenedorPersonas.innerHTML += `<strong>${persona.nombre}</strong> ${persona.fechaNacimiento}<br>`;
+      }
+      break;
+  }
+};
+export default worker;
+*/

@@ -4,17 +4,10 @@ import App from "./App.vue";
 import router from "./router";
 import PrimeVue from "primevue/config";
 import Aura from "@primeuix/themes/aura";
-import worker from "./services/Sqlite3.js";
-
-worker.onmessage = (e) => {
-  const action = e.data[0];
-  const args = e.data[1];
-  switch (action) {
-    case "test":
-      console.log("ffffffffF");
-      break;
-  }
-};
+import worker_service from "./services/Worker_service.js";
+const worker = new Worker(new URL("./services/db_worker.js", import.meta.url), {
+  type: "module",
+});
 
 const app = createApp(App);
 
@@ -27,6 +20,7 @@ app.provide("Test", {
 });
 */
 app.provide("Worker", worker);
+app.provide("Worker_service", worker_service);
 
 app.use(router);
 
