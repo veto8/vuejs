@@ -1,6 +1,42 @@
 // services/ProductService.js
 
 const Worker_service = {
+  async set_default_message(worker) {
+    worker.onmessage = (e) => {
+      const action = e.data[0];
+      const args = e.data[1];
+      switch (action) {
+        case "log_message":
+          console.log("llllllllllllllll");
+          console.log({ args });
+          console.log("lllllllllllllllllll");
+          //log.info(argumentos);
+          break;
+        case "iniciado":
+          [$nombre, $fechaNacimiento, $insertar, $obtener].forEach(
+            (elemento) => (elemento.disabled = false),
+          );
+          break;
+        case "persona_insertada":
+          console.log({ argumentos });
+          //log.info("...persona insertada");
+          break;
+
+        case "log_message":
+          console.log({ argumentos });
+          //log.info(argumentos);
+          break;
+
+        case "personas_obtenidas":
+          const personas = argumentos;
+          $contenedorPersonas.innerHTML = "";
+          for (const persona of personas) {
+            //  $contenedorPersonas.innerHTML += `<strong>${persona.nombre}</strong> ${persona.fechaNacimiento}<br>`;
+          }
+          break;
+      }
+    };
+  },
   async post_message(worker, id, message) {
     return new Promise((resolve, reject) => {
       const messageHandler = (e) => {
