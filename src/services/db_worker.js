@@ -16,13 +16,13 @@ self.addEventListener("install", (installEvent) => {
 });
 
 self.addEventListener("activate", function (event) {
-  //console.log('[Service Worker] Activating Service Worker ....', event);
+  console.log("[Service Worker] Activating Service Worker ....", event);
 
   event.waitUntil(
     caches.keys().then(function (keyList) {
       return Promise.all(
         keyList.map(function (key) {
-          //console.log('key: '+ key);
+          console.log("key: " + key);
           if (key !== app_name && key !== app_name) {
             return caches.delete(key);
           }
@@ -44,11 +44,13 @@ const iniciar = async () => {
   if ("opfs" in sqlite3) {
     db = new sqlite3.oo1.OpfsDb(NOMBRE_BASE_DE_DATOS);
     let msg = "OPFS is available, created persisted database at " + db.filename;
+    console.log(msg);
     self.postMessage(["log_message", msg]);
   } else {
     db = new sqlite3.oo1.DB(NOMBRE_BASE_DE_DATOS, "ct");
     const msg =
       "OPFS is not available, created transient database" + db.filename;
+    console.log(msg);
     self.postMessage(["log_message", msg]);
   }
   await db.exec(`CREATE TABLE IF NOT EXISTS personas(
@@ -77,6 +79,11 @@ self.onmessage = async (evento) => {
   const accion = evento.data[0];
   const argumentos = evento.data[1];
   switch (accion) {
+    case "test":
+      await iniciar();
+      self.postMessage(["test"]);
+      break;
+
     case "iniciar":
       await iniciar();
       self.postMessage(["iniciado"]);

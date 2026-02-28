@@ -1,32 +1,9 @@
 // services/ProductService.js
-import Product from "../models/Product";
 
-let worker = new Worker(new URL("./db_worker.js", import.meta.url), {
+const worker = new Worker(new URL("./db_worker.js", import.meta.url), {
   type: "module",
 });
-/*
-const $iniciarBaseDeDatos = document.querySelector("#btnIniciarBaseDeDatos");
-const $insertar = document.querySelector("#btnInsertar");
-const $obtener = document.querySelector("#btnObtener");
-const $nombre = document.querySelector("#nombre");
-const $fechaNacimiento = document.querySelector("#fechaNacimiento");
-const $contenedorPersonas = document.querySelector("#contenedorPersonas");
 
-$insertar.addEventListener("click", () => {
-  worker.postMessage([
-    "insertar_persona",
-    { nombre: $nombre.value, fechaNacimiento: $fechaNacimiento.value },
-  ]);
-});
-
-$obtener.addEventListener("click", () => {
-  worker.postMessage(["obtener_personas"]);
-});
-
-$iniciarBaseDeDatos.onclick = () => {
-  worker.postMessage(["iniciar"]);
-};
-*/
 worker.onmessage = (evento) => {
   const accion = evento.data[0];
   const argumentos = evento.data[1];
@@ -56,20 +33,4 @@ worker.onmessage = (evento) => {
   }
 };
 
-class Products {
-  async get() {
-    let products = [
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-    ];
-    return products;
-  }
-}
-
-export default Products;
+export default worker;

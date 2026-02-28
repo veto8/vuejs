@@ -1,0 +1,13 @@
+  /home/veto/webs/vuejs/v1/src/components:
+  total used in directory 44 available 32.2 GiB
+  drwxrwxr-x 2 veto veto 4096 Feb 28 08:59 .
+  drwxrwxr-x 8 veto veto 4096 Feb 28 05:47 ..
+  -rw-rw-r-- 1 veto veto 1142 Feb 28 08:59 Add2Desktop.vue
+  -rw-rw-r-- 1 veto veto 1189 Feb 28 06:27 Breadcrumb.vue
+  -rw-rw-r-- 1 veto veto 1143 Feb 28 08:59 Db.vue
+  -rw-rw-r-- 1 veto veto  179 Feb 28 05:53 Log.vue
+  -rw-rw-r-- 1 veto veto 3251 Feb 28 06:18 Menubar.vue
+  -rw-rw-r-- 1 veto veto  548 Feb 24 22:17 ProductCatalogComponent.vue
+  -rw-rw-r-- 1 veto veto  512 Feb 24 22:17 ProductComponent.vue
+  -rw-rw-r-- 1 veto veto  527 Feb 24 22:17 ShoppingCartComponent.vue
+  -rw-rw-r-- 1 veto veto  942 Feb 28 06:28 Table.vue

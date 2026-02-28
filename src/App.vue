@@ -8,10 +8,10 @@ import {Log2textarea} from "log2textarea/dist/log2textarea.js";
 
 const log = ref(null);
 
-
 onMounted(() => {
   log.value = new Log2textarea("logger");
-  provide('log', log); // Provide the ref
+  provide('log', log.value); 
+
 });
 
 </script>
