@@ -1,61 +1,29 @@
 // services/ProductService.js
 
 const Worker_service = {
-  async get() {
-    let products = [
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-      { code: "xxx", name: "fff", category: "ccccc", quantity: "1111" },
-    ];
-    return products;
-  },
-
   async post_message(worker, id, message) {
     return new Promise((resolve, reject) => {
-      const messageId = 12345;
-      //      console.log(messageId);
-      worker.onmessage = (e) => {
-        const action = e.data[0];
-        const args = e.data[1];
+      const messageHandler = (e) => {
+        const _id = e.data[0];
+        const _message = e.data[1];
+        if (_id === id) {
+          worker.removeEventListener("message", messageHandler);
+          worker.removeEventListener("error", errorHandler);
+          resolve(_message);
+        }
+      };
 
-        console.log(args);
-        console.log(action);
-        switch (action) {
-          case "test":
-            resolve(args);
-            break;
-          case "log_message":
-            console.log({ args });
-            //log.info(argumentos);
-            break;
-        }
-      };
-      /*
-      worker.onmessage = (event) => {
-        if (event.data.id === messageId) {
-          console.log("xxxxxx");
-          resolve(event.data.result);
-          worker.onmessage = null;
-        }
-      };
-      */
-      worker.onerror = (error) => {
+      const errorHandler = (error) => {
+        worker.removeEventListener("message", messageHandler);
+        worker.removeEventListener("error", errorHandler);
         reject(error);
-        worker.onerror = null;
       };
+
+      worker.addEventListener("message", messageHandler);
+      worker.addEventListener("error", errorHandler);
+
       worker.postMessage([id, message]);
     });
-  },
-  async make_id() {
-    return (
-      Math.random().toString(36).substring(2, 15) +
-      Math.random().toString(36).substring(2, 15)
-    );
   },
 };
 

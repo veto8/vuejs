@@ -86,6 +86,7 @@ self.onmessage = async (evento) => {
 
     case "iniciar":
       await iniciar();
+      self.postMessage(["log_message", "init db"]);
       self.postMessage(["iniciado"]);
       break;
     case "insertar_persona":
