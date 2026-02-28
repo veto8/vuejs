@@ -6,9 +6,16 @@ import PrimeVue from "primevue/config";
 import Aura from "@primeuix/themes/aura";
 import worker from "./services/Sqlite3.js";
 
-console.log("xxxxxxxxxxxx");
-console.log(worker);
-console.log("xxxxxxxxxx");
+worker.onmessage = (e) => {
+  const action = e.data[0];
+  const args = e.data[1];
+  switch (action) {
+    case "test":
+      console.log("ffffffffF");
+      break;
+  }
+};
+
 const app = createApp(App);
 
 app.provide("Test", {

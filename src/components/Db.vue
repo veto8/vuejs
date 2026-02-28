@@ -16,19 +16,7 @@ const init_sqlite3 = async () => {
 log.info("...init_sqlite3");
 log.info(test.message);
 log.info(test.sum(2,3));
-
 worker.postMessage(["test"]);
-
-worker.onmessage = (evento) => {
-  const accion = evento.data[0];
-  const argumentos = evento.data[1];
-  switch (accion) {
-case "test":
-console.log("ffffffffF");
-      break;
-  }
-};
-
 
 };
 
