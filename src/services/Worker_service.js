@@ -1,15 +1,16 @@
 // services/ProductService.js
-
 const Worker_service = {
   async set_default_message(worker) {
     worker.onmessage = (e) => {
-      const action = e.data[0];
-      const args = e.data[1];
-      switch (action) {
+      const message_id = e.data[0];
+      const message = e.data[1];
+      switch (message_id) {
         case "log_message":
           console.log("llllllllllllllll");
-          console.log({ args });
+          console.log(message);
+          console.log(message_id);
           console.log("lllllllllllllllllll");
+
           //log.info(argumentos);
           break;
         case "iniciado":
@@ -18,12 +19,12 @@ const Worker_service = {
           );
           break;
         case "persona_insertada":
-          console.log({ argumentos });
+          console.log(message);
           //log.info("...persona insertada");
           break;
 
         case "log_message":
-          console.log({ argumentos });
+          console.log(message);
           //log.info(argumentos);
           break;
 

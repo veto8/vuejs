@@ -44,13 +44,13 @@ const iniciar = async () => {
   if ("opfs" in sqlite3) {
     db = new sqlite3.oo1.OpfsDb(NOMBRE_BASE_DE_DATOS);
     let msg = "OPFS is available, created persisted database at " + db.filename;
-    console.log(msg);
+    //console.log(msg);
     self.postMessage(["log_message", msg]);
   } else {
     db = new sqlite3.oo1.DB(NOMBRE_BASE_DE_DATOS, "ct");
     const msg =
       "OPFS is not available, created transient database" + db.filename;
-    console.log(msg);
+    //console.log(msg);
     self.postMessage(["log_message", msg]);
   }
   await db.exec(`CREATE TABLE IF NOT EXISTS personas(

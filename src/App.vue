@@ -11,7 +11,6 @@ const log = ref(null);
 onMounted(() => {
   log.value = new Log2textarea("logger");
   provide('log', log.value); 
-
 });
 
 </script>
